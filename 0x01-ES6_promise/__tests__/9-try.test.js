@@ -9,5 +9,5 @@ test('guardrail should return the result and guardrail message on success', () =
 
 test('guardrail should return the error message and guardrail message on error', () => {
   const result = guardrail(() => divideFunction(10, 0));
-  expect(result).toEqual(['cannot divide by 0', 'Guardrail was processed']);
+  expect(result).toEqual(['Error: cannot divide by 0', 'Guardrail was processed']);
 });

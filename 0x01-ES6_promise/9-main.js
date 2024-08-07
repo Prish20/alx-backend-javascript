@@ -6,4 +6,4 @@ console.log(guardrail(() => divideFunction(10, 2)));
 // Expected output: [ 5, 'Guardrail was processed' ]
 
 console.log(guardrail(() => divideFunction(10, 0)));
-// Expected output: [ 'cannot divide by 0', 'Guardrail was processed' ]
+// Expected output: [ 'Error: cannot divide by 0', 'Guardrail was processed' ]
