@@ -65,9 +65,27 @@ function executeWork(employee: Director | Teacher): void {
     }
 }
 
+// String literal type named Subjects
+type Subjects = 'Math' | 'History';
+
+// Function named teachClass
+function teachClass(todayClass: Subjects): string {
+    if (todayClass === 'Math') {
+        return 'Teaching Math';
+    } else if (todayClass === 'History') {
+        return 'Teaching History';
+    }
+}
+
 // Example usage
 const employee1 = createEmployee(200);
 executeWork(employee1); // Expected output: Getting to work
 
 const employee2 = createEmployee(1000);
 executeWork(employee2); // Expected output: Getting to director tasks
+
+const employee3 = createEmployee('$500');
+executeWork(employee3); // Expected output: Getting to director tasks
+
+console.log(teachClass('Math')); // Expected output: Teaching Math
+console.log(teachClass('History')); // Expected output: Teaching History
