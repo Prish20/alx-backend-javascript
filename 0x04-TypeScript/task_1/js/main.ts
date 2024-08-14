@@ -1,4 +1,4 @@
-// Teacher interface from the previous task
+// Existing interfaces from previous tasks
 interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
@@ -8,27 +8,19 @@ interface Teacher {
     [propName: string]: any;
 }
 
-// Directors interface extending Teacher
 interface Directors extends Teacher {
     numberOfReports: number;
 }
 
-// Create a director object based on the Directors interface
-const director1: Directors = {
-    firstName: 'John',
-    lastName: 'Doe',
-    location: 'London',
-    fullTimeEmployee: true,
-    numberOfReports: 17,
+// Define the printTeacherFunction interface
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
+}
+
+// Implement the printTeacher function
+const printTeacher: printTeacherFunction = (firstName: string, lastName: string): string => {
+    return `${firstName.charAt(0)}. ${lastName}`;
 };
 
-console.log(director1);
-
-// Expected output:
-// {
-//   firstName: "John",
-//   lastName: "Doe",
-//   location: "London",
-//   fullTimeEmployee: true,
-//   numberOfReports: 17
-// }
+// Example usage
+console.log(printTeacher("John", "Doe")); // Expected output: J. Doe
