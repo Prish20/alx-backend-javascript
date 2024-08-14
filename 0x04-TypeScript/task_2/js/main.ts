@@ -51,43 +51,23 @@ function createEmployee(salary: number | string): Director | Teacher {
     }
 }
 
-// Type guard function to check if an employee is a Director
+// Function to check if the employee is a Director
 function isDirector(employee: Director | Teacher): employee is Director {
     return (employee as Director).workDirectorTasks !== undefined;
 }
 
-// Type guard function to check if an employee is a Teacher
-function isTeacher(employee: Director | Teacher): employee is Teacher {
-    return (employee as Teacher).workTeacherTasks !== undefined;
+// Function to execute the appropriate work method based on the employee type
+function executeWork(employee: Director | Teacher): void {
+    if (isDirector(employee)) {
+        console.log(employee.workDirectorTasks());
+    } else {
+        console.log(employee.workTeacherTasks());
+    }
 }
 
 // Example usage
 const employee1 = createEmployee(200);
-console.log(employee1 instanceof Teacher ? "Teacher" : "Director");
-console.log(employee1.workFromHome());
-console.log(employee1.getCoffeeBreak());
-if (isTeacher(employee1)) {
-    console.log(employee1.workTeacherTasks()); // Logs "Getting to work"
-} else if (isDirector(employee1)) {
-    console.log(employee1.workDirectorTasks()); // Should not reach here in this case
-}
+executeWork(employee1); // Expected output: Getting to work
 
 const employee2 = createEmployee(1000);
-console.log(employee2 instanceof Teacher ? "Teacher" : "Director");
-console.log(employee2.workFromHome());
-console.log(employee2.getCoffeeBreak());
-if (isTeacher(employee2)) {
-    console.log(employee2.workTeacherTasks()); // Should not reach here in this case
-} else if (isDirector(employee2)) {
-    console.log(employee2.workDirectorTasks()); // Logs "Getting to director tasks"
-}
-
-const employee3 = createEmployee('$500');
-console.log(employee3 instanceof Teacher ? "Teacher" : "Director");
-console.log(employee3.workFromHome());
-console.log(employee3.getCoffeeBreak());
-if (isTeacher(employee3)) {
-    console.log(employee3.workTeacherTasks()); // Should not reach here in this case
-} else if (isDirector(employee3)) {
-    console.log(employee3.workDirectorTasks()); // Logs "Getting to director tasks"
-}
+executeWork(employee2); // Expected output: Getting to director tasks
