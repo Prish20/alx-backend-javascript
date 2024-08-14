@@ -1,29 +1,34 @@
-// Define the Teacher interface
+// Teacher interface from the previous task
 interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
     fullTimeEmployee: boolean;
     yearsOfExperience?: number;
     location: string;
-    [propName: string]: any; // Index signature to allow additional properties
+    [propName: string]: any;
 }
 
-// Create a teacher object based on the interface
-const teacher3: Teacher = {
+// Directors interface extending Teacher
+interface Directors extends Teacher {
+    numberOfReports: number;
+}
+
+// Create a director object based on the Directors interface
+const director1: Directors = {
     firstName: 'John',
-    fullTimeEmployee: false,
     lastName: 'Doe',
     location: 'London',
-    contract: false,
+    fullTimeEmployee: true,
+    numberOfReports: 17,
 };
 
-console.log(teacher3);
+console.log(director1);
 
 // Expected output:
 // {
-//   contract: false,
 //   firstName: "John",
-//   fullTimeEmployee: false,
 //   lastName: "Doe",
-//   location: "London"
+//   location: "London",
+//   fullTimeEmployee: true,
+//   numberOfReports: 17
 // }
